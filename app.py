@@ -35,5 +35,5 @@ def check_number():
         return render_template('index.html', message="Invalid input. Please enter a valid number.")
 
 if __name__ == '__main__':
-    app.run(debug=False, port='0.0.0.0')
+    app.run(debug=False, port=5000)
 
