@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shutdown Guessing Game</title>
+
+<style>
+/* Reset some default styles */
+body, h1, p, form {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    position:absolute;left:300px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    height:40vh;
+    background-color: #444;
+    padding:30px;
+    width:50%;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+
+input[type="number"] {
+    width: 30%;
+    padding: 10px;
+    border: 2px solid #555;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #333;
+    color: #fff;
+}
+
+input[type="submit"] {
+    background-color: #008CBA;
+    color: #fff;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+input[type="submit"]:hover {
+    background-color: #005d85;
+}
+
+.computer-number {
+    position:relative;top:350px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 50px;
+}
+
+
+
+</style>
+</head>
+<body>
+    <h1>Shutdown Guessing Game</h1>
+    <p>If you lose, your pc will shutdown</p>
+    <p>{{ message }}</p>
+
+    <form method="POST" action="/check_number">
+        <label for="number">Enter a number (1-10)</label>
+        <input type="number" name="number" id="number" min="1" max="10" required>
+        <br><br>
+        <input type="submit" value="Guess">
+    </form>
+    <div class="computer-number">
+        {% if message != "Invalid input. Please enter a valid number." %}
+            Computer's Number: {{ result }} 
+        {% endif %}
+    </div>
+
+    <script>
+        {% if message == "Congratulations! You're lucky!" %}
+            // Display an alert if the player is lucky
+            window.alert("Congratulations! You're lucky!");
+        {% endif %}
+    </script>
+</body>
+</html>
